@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=DM+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-head: "Syne", sans-serif;
+  --font-mono: "DM Mono", ui-monospace, SFMono-Regular, monospace;
+
+  --color-navy: #0F2A4E;
+  --color-navy-mid: #1A3D6B;
+  --color-navy-light: #E8EFF8;
+  --color-teal: #1A6B5E;
+  --color-teal-mid: #2D9B8A;
+  --color-teal-light: #E0F2EF;
+  --color-amber: #F0A500;
+  --color-amber-light: #FEF3D0;
+  --color-red: #C0392B;
+  --color-red-light: #FDECEA;
+  --color-purple: #5B2D8E;
+  --color-purple-light: #F0E8FA;
+}
+
+@layer base {
+  body {
+    @apply bg-[#F5F7FA] text-[#101828] font-sans;
+  }
+}
+
+@layer components {
+  .sidebar-grid-pattern {
+    background-image: repeating-linear-gradient(90deg, rgba(255, 255, 255, .02) 0 1px, transparent 1px 40px),
+                      repeating-linear-gradient(180deg, rgba(255, 255, 255, .02) 0 1px, transparent 1px 40px);
+  }
+
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-gray-300 rounded-full;
+  }
+}
