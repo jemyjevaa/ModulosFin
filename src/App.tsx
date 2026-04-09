@@ -4,22 +4,26 @@
  */
 
 import { useState, useMemo } from "react";
-import { Sidebar } from "./components/Sidebar";
-import { Header } from "./components/Header";
-import { Dashboard } from "./components/Dashboard";
-import { Solicitudes } from "./components/Solicitudes";
-import { CierreMensual } from "./components/CierreMensual";
-import { Pasivos, CajaChica, Juridico, Contratos, Cotizaciones } from "./components/TesoriaModules";
-import { Polizas, CFDI } from "./components/ContabilidadModules";
-import { Proveedores, Empresas, Usuarios, Unidades } from "./components/CatalogosModules";
-import { Rentabilidad, Almacenes } from "./components/ReportesModules";
-import { ConciliacionBancaria } from "./components/ConciliacionBancaria";
-import { PortalProveedores } from "./components/PortalProveedores";
-import { AsistenteIA } from "./components/AsistenteIA";
-import { BancaDirecta } from "./components/BancaDirecta";
+import { Sidebar } from "./modules/Common/Sidebar";
+import { Header } from "./modules/Common/Header";
+import { Dashboard } from "./modules/Dashboard/Dashboard";
+import { Solicitudes } from "./modules/Tesoria/Solicitudes";
+import { CierreMensual } from "./modules/Contabilidad/CierreMensual";
+import { Pasivos, CajaChica, Juridico, Contratos, Cotizaciones } from "./modules/Tesoria/TesoriaModules";
+import { Polizas, CFDI } from "./modules/Contabilidad/ContabilidadModules";
+import { Participantes, Empresas, Usuarios, Unidades, CategoriasSuscripciones, Departamentos, Moneda } from "./modules/Catalogos/CatalogosModules";
+import { Rentabilidad, Almacenes } from "./modules/Reportes/ReportesModules";
+import { ConciliacionBancaria } from "./modules/Contabilidad/ConciliacionBancaria";
+import { PortalProveedores } from "./modules/Portal/PortalProveedores";
+import { AsistenteIA } from "./modules/Innovacion/AsistenteIA";
+import { BancaDirecta } from "./modules/Innovacion/BancaDirecta";
 import { View } from "./types";
 import { cn } from "./lib/utils";
 import { LayoutDashboard } from "lucide-react";
+
+import { Suscripciones } from "./modules/Suscripciones/Suscripciones";
+import { ReportesGeneral } from "./modules/Reportes/ReportesGeneral";
+import { ContabilidadDashboard } from "./modules/Contabilidad/ContabilidadDashboard";
 
 export default function App() {
   const [currentView, setCurrentView] = useState<View>("dashboard");
@@ -28,6 +32,7 @@ export default function App() {
   const currentViewLabel = useMemo(() => {
     const labels: Record<View, string> = {
       dashboard: "Dashboard",
+      contabilidad_dashboard: "Dashboard Contable",
       solicitudes: "Solicitudes de Egreso",
       pasivos: "Pago de Pasivos",
       caja: "Caja Chica",
@@ -37,7 +42,7 @@ export default function App() {
       polizas: "Pólizas",
       cierre: "Cierre Mensual",
       cfdi: "CFDI / SAT",
-      proveedores: "Proveedores",
+      proveedores: "Participantes",
       empresas: "Empresas",
       usuarios: "Usuarios",
       unidades: "Unidades",
@@ -45,7 +50,15 @@ export default function App() {
       almacenes: "Almacenes",
       asistente_ia: "Asistente IA",
       banca_directa: "Banca Directa",
+      conciliacion: "Conciliación Bancaria Inteligente",
       portal_proveedores: "Portal de Proveedores",
+      suscripciones: "Suscripciones",
+      pagos: "Pagos de Suscripciones",
+      participantes: "Participantes",
+      reportes_general: "Reportes",
+      categorias: "Categorías (Susc.)",
+      departamentos: "Departamentos",
+      moneda: "Moneda",
     };
     return labels[currentView] || "Panel";
   }, [currentView]);
@@ -53,7 +66,36 @@ export default function App() {
   const renderView = () => {
     switch (currentView) {
       case "dashboard":
-        return <Dashboard />;
+        return <Dashboard setView={setCurrentView} />;
+      case "contabilidad_dashboard":
+        return <ContabilidadDashboard />;
+      case "suscripciones":
+        return <Suscripciones setView={setCurrentView} />;
+      case "reportes_general":
+        return <ReportesGeneral setView={setCurrentView} />;
+      case "pagos":
+        return (
+          <div className="flex flex-col items-center justify-center min-h-[50vh] text-gray-400">
+            <LayoutDashboard className="w-16 h-16 opacity-20 mb-4" />
+            <h2 className="text-xl font-head text-lg font-black text-navy uppercase tracking-widest">Módulo de Pagos en Desarrollo</h2>
+            <p className="text-sm font-medium mt-2">Próximamente podrás gestionar todos tus pagos aquí.</p>
+            <button
+              onClick={() => setCurrentView("suscripciones")}
+              className="mt-6 text-[11px] font-bold text-navy hover:underline uppercase tracking-widest"
+            >
+              Volver a Suscripciones
+            </button>
+          </div>
+        );
+      case "participantes":
+      case "proveedores":
+        return <Participantes />;
+      case "categorias":
+        return <CategoriasSuscripciones />;
+      case "departamentos":
+        return <Departamentos />;
+      case "moneda":
+        return <Moneda />;
       case "solicitudes":
         return <Solicitudes />;
       case "pasivos":
@@ -76,10 +118,10 @@ export default function App() {
         return <CFDI />;
       case "cierre":
         return <CierreMensual />;
-      case "proveedores":
-        return <Proveedores />;
       case "portal_proveedores":
         return <PortalProveedores />;
+      case "conciliacion":
+        return <ConciliacionBancaria />;
       case "empresas":
         return <Empresas />;
       case "usuarios":
@@ -98,7 +140,7 @@ export default function App() {
             </div>
             <h2 className="text-xl font-head font-bold text-navy tracking-tight uppercase tracking-widest">Módulo en Desarrollo</h2>
             <p className="text-sm font-medium text-gray-500 mt-2">La sección "{currentViewLabel}" está siendo integrada al núcleo del ERP.</p>
-            <button 
+            <button
               onClick={() => setCurrentView("dashboard")}
               className="mt-8 px-6 py-2.5 bg-navy text-white text-xs font-bold uppercase tracking-widest rounded-md hover:bg-navy-mid transition-all shadow-sm"
             >
@@ -121,9 +163,9 @@ export default function App() {
         "flex-1 flex flex-col transition-all duration-300 min-w-0",
         isSidebarOpen ? "lg:ml-[248px]" : "lg:ml-[80px]"
       )}>
-        <Header 
-          toggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)} 
-          title={currentViewLabel} 
+        <Header
+          toggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)}
+          title={currentViewLabel}
         />
 
         <div className="flex-1 overflow-y-auto custom-scrollbar p-6 lg:p-8">
