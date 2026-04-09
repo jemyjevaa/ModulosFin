@@ -23,6 +23,15 @@ export type View =
   | "rentabilidad"
   | "almacenes"
   | "asistente_ia"
+  | "suscripciones"
+  | "pagos"
+  | "participantes"
+  | "contabilidad_dashboard"
+  | "reportes_general"
+  | "categorias"
+  | "departamentos"
+  | "moneda"
+  | "conciliacion"
   | "banca_directa"
   | "portal_proveedores";
 
