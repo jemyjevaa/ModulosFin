@@ -49,7 +49,7 @@ export const AsistenteIA = () => {
 
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
         <div className="lg:col-span-3 space-y-6">
-          <div className="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden min-h-[400px]">
+          <div className="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden min-h-[50vh]">
             <div className="px-8 py-5 border-b border-gray-100 flex items-center justify-between">
               <h3 className="font-head text-sm font-bold text-navy uppercase tracking-widest">Predicciones de Clasificación (OCR)</h3>
               <span className="px-3 py-1 bg-green-light text-green text-[10px] font-black uppercase tracking-[0.1em] rounded-full">98% PRECISIÓN</span>

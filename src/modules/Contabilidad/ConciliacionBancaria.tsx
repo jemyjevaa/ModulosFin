@@ -125,7 +125,7 @@ export const ConciliacionBancaria = () => {
         ))}
       </div>
 
-      <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden min-h-[500px]">
+      <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden min-h-[60vh]">
         <div className="px-6 py-4 border-b border-gray-100 flex items-center justify-between">
           <div className="flex items-center gap-4">
             <h3 className="font-head text-sm font-bold text-navy uppercase tracking-widest">Movimientos de la cuenta</h3>

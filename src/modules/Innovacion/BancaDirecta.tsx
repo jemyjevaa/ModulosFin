@@ -116,7 +116,7 @@ export const BancaDirecta = () => {
         ))}
       </div>
 
-      <div className="bg-white rounded-[32px] border border-gray-200 shadow-2xl shadow-navy/[0.04] overflow-hidden min-h-[500px]">
+      <div className="bg-white rounded-[32px] border border-gray-200 shadow-2xl shadow-navy/[0.04] overflow-hidden min-h-[60vh]">
         <div className="px-10 py-8 border-b border-gray-100 flex items-center justify-between">
           <h3 className="font-head text-lg font-black text-navy tracking-tight flex items-center gap-3">
              Conciliación Automática <span className="text-gray-300 font-medium text-[15px] uppercase tracking-widest">(Pendientes)</span>

@@ -160,7 +160,7 @@ export const Participantes = () => {
         </button>
       </div>
 
-      <div className="bg-white rounded-[10px] border border-gray-200 shadow-sm overflow-hidden min-h-[500px] flex flex-col">
+      <div className="bg-white rounded-[10px] border border-gray-200 shadow-sm overflow-hidden min-h-[50vh] lg:min-h-[600px] flex flex-col">
         {/* New Tab Structure from Image 3 */}
         <div className="flex bg-white px-2 mt-2">
           {["Datos Fiscales", "Pagos", "Datos de Contacto", "Generales"].map((tab, idx) => (
@@ -247,7 +247,7 @@ export const Empresas = () => {
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
               className="relative w-full max-w-2xl bg-white rounded-[10px] shadow-2xl overflow-hidden border border-white/20"
             >
-              <div className="flex flex-col h-[600px]">
+              <div className="flex flex-col h-[85vh] max-h-[700px]">
                 <div className="px-8 py-6 border-b border-gray-100 flex items-center justify-between bg-gray-50/50">
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 bg-navy rounded-xl flex items-center justify-center text-white">

@@ -825,7 +825,7 @@ export const Cotizaciones = () => {
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
               className="relative w-full max-w-4xl bg-white rounded-3xl shadow-2xl overflow-hidden border border-white/20"
             >
-              <div className="flex flex-col md:flex-row h-[650px]">
+              <div className="flex flex-col md:flex-row h-[85vh] max-h-[750px]">
                 {/* Fixed Sidebar for summary */}
                 <div className="w-full md:w-72 bg-navy p-8 text-white shrink-0 flex flex-col justify-between relative overflow-hidden">
                    <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full -mr-16 -mt-16 blur-2xl font-head" />
