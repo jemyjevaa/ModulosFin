@@ -1,16 +1,12 @@
-/**
- * @license
- * SPDX-License-Identifier: Apache-2.0
- */
-
-import { Menu, Search, Bell, Settings } from "lucide-react";
+import { Menu, Search, Bell, Settings, LogOut } from "lucide-react";
 
 interface HeaderProps {
   toggleSidebar: () => void;
   title: string;
+  onLogout?: () => void;
 }
 
-export const Header = ({ toggleSidebar, title }: HeaderProps) => {
+export const Header = ({ toggleSidebar, title, onLogout }: HeaderProps) => {
   return (
     <header className="h-[60px] bg-white border-b border-gray-200 flex items-center justify-between px-6 sticky top-0 z-30 shrink-0">
       <div className="flex items-center gap-4">
@@ -38,6 +34,16 @@ export const Header = ({ toggleSidebar, title }: HeaderProps) => {
         <button className="w-[34px] h-[34px] flex items-center justify-center bg-white border border-gray-300 rounded-md hover:bg-gray-100 transition-colors">
           <Settings className="w-4 h-4 text-gray-600" />
         </button>
+
+        {onLogout && (
+          <button 
+            onClick={onLogout}
+            className="w-[34px] h-[34px] flex items-center justify-center bg-red-light border border-red/20 rounded-md hover:bg-red/10 transition-colors group"
+            title="Cerrar Sesión"
+          >
+            <LogOut className="w-4 h-4 text-red transition-transform group-hover:translate-x-0.5" />
+          </button>
+        )}
       </div>
     </header>
   );

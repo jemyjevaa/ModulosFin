@@ -33,7 +33,11 @@ export type View =
   | "moneda"
   | "conciliacion"
   | "banca_directa"
-  | "portal_proveedores";
+  | "portal_proveedores"
+  | "compras_dashboard"
+  | "compras_solicitudes"
+  | "compras_ordenes"
+  | "compras_nueva_odc";
 
 export interface NavItem {
   id: View;
