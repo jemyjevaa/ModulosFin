@@ -33,11 +33,21 @@ import {
   FileSearch,
   Sparkles,
   Globe,
-  ChevronDown
+  ChevronDown,
+  ShoppingCart,
+  PlusCircle,
+  FilePlus,
+  Package
 } from "lucide-react";
 
 const NAV_ITEMS: NavItem[] = [
   { id: "dashboard", label: "Dashboard", icon: LayoutDashboard, category: "General", badge: 5, badgeColor: "red" },
+
+  // COMPRAS (Matching image order)
+  { id: "compras_dashboard", label: "Dashboard Compras", icon: LayoutDashboard, category: "Compras" },
+  { id: "compras_solicitudes", label: "Solicitudes", icon: ClipboardList, category: "Compras", badge: 5, badgeColor: "amber" },
+  { id: "compras_ordenes", label: "Órdenes de compra", icon: ShoppingCart, category: "Compras" },
+  { id: "compras_nueva_odc", label: "Nueva ODC", icon: FilePlus, category: "Compras" },
 
   // GESTIÓN
   { id: "suscripciones", label: "Suscripciones", icon: FileText, category: "Gestión" },

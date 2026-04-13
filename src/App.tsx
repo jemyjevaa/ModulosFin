@@ -24,12 +24,20 @@ import { LayoutDashboard } from "lucide-react";
 import { Suscripciones } from "./modules/Suscripciones/Suscripciones";
 import { ReportesGeneral } from "./modules/Reportes/ReportesGeneral";
 import { ContabilidadDashboard } from "./modules/Contabilidad/ContabilidadDashboard";
+import { ComprasDashboard } from "./modules/Compras/ComprasDashboard";
+import { ComprasSolicitudes } from "./modules/Compras/ComprasSolicitudes";
+import { ComprasOrdenes } from "./modules/Compras/ComprasOrdenes";
+import { NuevaODC } from "./modules/Compras/NuevaODC";
+
+import { Login } from "./modules/Auth/Login";
 
 export default function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [currentView, setCurrentView] = useState<View>("dashboard");
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
   const currentViewLabel = useMemo(() => {
+    // ... existing labels ...
     const labels: Record<View, string> = {
       dashboard: "Dashboard",
       contabilidad_dashboard: "Dashboard Contable",
@@ -59,11 +67,20 @@ export default function App() {
       categorias: "Categorías (Susc.)",
       departamentos: "Departamentos",
       moneda: "Moneda",
+      compras_dashboard: "Dashboard de Compras",
+      compras_solicitudes: "Solicitudes de Compra",
+      compras_ordenes: "Órdenes de Compra",
+      compras_nueva_odc: "Nueva ODC",
     };
     return labels[currentView] || "Panel";
   }, [currentView]);
 
+  if (!isLoggedIn) {
+    return <Login onLogin={() => setIsLoggedIn(true)} />;
+  }
+
   const renderView = () => {
+    // ... existing renderView logic ...
     switch (currentView) {
       case "dashboard":
         return <Dashboard setView={setCurrentView} />;
@@ -132,6 +149,14 @@ export default function App() {
         return <Rentabilidad />;
       case "almacenes":
         return <Almacenes />;
+      case "compras_dashboard":
+        return <ComprasDashboard />;
+      case "compras_solicitudes":
+        return <ComprasSolicitudes />;
+      case "compras_ordenes":
+        return <ComprasOrdenes />;
+      case "compras_nueva_odc":
+        return <NuevaODC />;
       default:
         return (
           <div className="flex flex-col items-center justify-center h-[60vh] text-gray-400">
@@ -166,6 +191,7 @@ export default function App() {
         <Header
           toggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)}
           title={currentViewLabel}
+          onLogout={() => setIsLoggedIn(false)}
         />
 
         <div className="flex-1 overflow-y-auto custom-scrollbar p-4 lg:p-8">
